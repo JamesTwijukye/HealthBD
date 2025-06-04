@@ -17,6 +17,8 @@ userRouter.get("/register",(req,res)=>{
 
 });
 
+userRouter.put("/Users",createUser);
+
 userRouter.put("/Users",updateUser);
 
 userRouter.delete("/Users/:id",deleteUser);
