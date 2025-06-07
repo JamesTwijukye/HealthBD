@@ -65,6 +65,7 @@ const Signin = () => {
               })}
               className="rounded-sm p-2 w-full"
             />
+             
 
             {showPassword ? (
               <FaEyeSlash
@@ -78,6 +79,14 @@ const Signin = () => {
               />
             )}
           </div>
+    
+            
+                      
+                   
+      <Link to="/ResetPassword" className=" text-blue-600 ml-2 text-md mt-2 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
+      forgotPassword?
+        </Link>  
+                  
           {
             <span className="text-red-500 text-xs">
               {errors.password?.message}
@@ -107,7 +116,7 @@ const Signin = () => {
         <div className="flex justify-center items-center mt-2">
           <h1 className="text-sm font-bold">
             Dont have an account on HealthBD ?
-            <Link to="/signup" className="text-xs text-blue-600 font-bold">
+            <Link to="/Register" className="text-md text-blue-600 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
               Sign up
             </Link>
           </h1>

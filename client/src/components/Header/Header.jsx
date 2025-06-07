@@ -1,6 +1,7 @@
 import logo from "../../assets/logo.svg";
 import {CiMenuBurger} from "react-icons/ci";
 import {useState} from "react";
+import Sidebar from "../SideBar/Sidebar";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -27,15 +28,17 @@ const Header = () => {
         <option value="French">French</option>
       </select>
 
-      <CiMenuBurger  className="text-white cursor-pointer" onClick={()=>ToogleShowMenu()}/>
+      <CiMenuBurger  className="text-white md:hidden flex cursor-pointer" onClick={()=>ToogleShowMenu()}/>
 
       {
         showMenu && (
-          <div className={"absolute top-0 left-0 h-screen bg-red-300 w-80"}>
-
+          <div className={"absolute top-0 left-0  h-screen w-80 z-50"}>
+              <Sidebar/>
           </div>
         )
       }
+
+     
     </div>
   );
 };

@@ -5,9 +5,11 @@ import { AiTwotoneSchedule } from "react-icons/ai";
 import { RiTeamFill } from "react-icons/ri";
 import dp from "../../assets/dp.png";
 
+
 const Sidebar = () => {
+  
   return (
-    <div className="h-full w-full md:flex hidden flex-col items-start text-black bg-white border-gray-100 shadow-lg">
+    <div className="h-full w-full sm:flex hidden  justify-evenly flex-col text-black bg-white border-gray-100 shadow-lg  ">
       <div className="w-full flex flex-col items-center justify-center mb-12">
         <img src={dp} className="w-16 border rounded-lg shadow-lg mt-4" alt={"display-image"}/>
         <div className="flex flex-col items-center mt-3">
@@ -15,6 +17,7 @@ const Sidebar = () => {
           <p className="text-sm text-gray-500">Doctor</p>
         </div>
       </div>
+      <div className="flex flex-col ">
       <ListItem icon={<GrOverview />} item="Overview" link_to="/" />
       <ListItem
         icon={<AiTwotoneSchedule />}
@@ -23,6 +26,14 @@ const Sidebar = () => {
       />
       <ListItem icon={<MdSick />} item="Patients" link_to="/patients" />
       <ListItem icon={<RiTeamFill />} item="Staff" link_to="/staff" />
+      </div>
+      
+
+
+       {/* logout button */}
+       <div className=" bg-green-600 h-[30px] w-[180px] text-white text-sm rounded-md py-3 px-3 flex justify-center items-center  ml-4 absolute bottom-0 left-0 right-0">
+        logout
+      </div>
     </div>
   );
 };
