@@ -7,9 +7,11 @@ import Staff from "./components/staff/Staff";
 import Login from "./components/Login&Register/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import {Toaster} from "sonner";
 
 function App() {
   return (
+      <>
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -20,11 +22,10 @@ function App() {
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Register" element={<Register/>}/>
         <Route path="/ResetPassword" element={<ResetPassword/>}/>
-       
-
-
       </Routes>
     </Router>
+    <Toaster richColors/>
+      </>
   );
 }
 

@@ -8,8 +8,9 @@ export const fetchAllUsers = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    if (!name) {
+    console.log(req.body);
+    const { username, email, password } = req.body;
+    if (!username) {
       return res.status(400).json({ message: "username is required" });
     }
     if (!email) {
@@ -24,7 +25,7 @@ export const createUser = async (req, res) => {
       return res.status(404).json({ message: "Email already associated with another account. try another email, or reset your account password" });
     }
 
-    const newUser = new Users({ name, email, password });
+    const newUser = new Users({ name:username, email, password });
     await newUser.save();
     res
       .status(201)

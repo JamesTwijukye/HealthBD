@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import morgan from "morgan"
+import cors from "cors"
 import DBconnect from"./dbconfig/server.js"
 import route from "./routes/index.js";
 
@@ -11,8 +12,13 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(morgan("dev"))
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+    methods: "*",
+}));
 
 DBconnect();
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 
