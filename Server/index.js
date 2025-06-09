@@ -13,27 +13,13 @@ const port = process.env.PORT;
 app.use(morgan("dev"))
 
 DBconnect();
-app.get("/addition",(req,res)=>{
-    const x =5;
-    const y =6;
-    const result = x+y;
+// Middleware to parse JSON bodies
+app.use(express.json());
 
-    res.json([{
-        city:"kampala",
-        location:"Uganda",
-        result:result,
-   
-
-
-
-    },
-]);
-});
+app.use(express.urlencoded({ extended: true }));
 
 app.use(route);
- 
 app.listen(port, ()=>{
-
 console.log(`listening to operations at port ${port}`);
 });
 

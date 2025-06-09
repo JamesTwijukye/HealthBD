@@ -7,9 +7,8 @@ export const fetchAllUsers = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-  const { name, email, password } = req.body;
-
   try {
+    const { name, email, password } = req.body;
     if (!name) {
       return res.status(400).json({ message: "username is required" });
     }
@@ -21,15 +20,15 @@ export const createUser = async (req, res) => {
     }
 
     const existingUser = await Users.findOne({ email: email });
-    if (!existingUser) {
-      return res.status(404).json({ message: "user was not found" });
+    if (existingUser) {
+      return res.status(404).json({ message: "Email already associated with another account. try another email, or reset your account password" });
     }
 
     const newUser = new Users({ name, email, password });
     await newUser.save();
     res
       .status(201)
-      .json({ message: "user created successfully", Users: newUser });
+      .json({ message: "Acount created successfully", Users: newUser });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

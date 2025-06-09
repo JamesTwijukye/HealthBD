@@ -11,10 +11,10 @@ const Header = () => {
   return (
     <div className="w-full h-16 flex justify-between items-center px-4 shadow-sm bg-green-800 relative">
       <div className="flex items-center gap-2">
-        <img src={logo} className="h-10" />
+        <img src={logo} className="h-10"  alt={""}/>
         {/* Logo */}
         <h1 className="text-xl font-bold text-gray-100"> HealthBD </h1>
-      </div>
+  </div>
       {/* Search Bar */}
 
       <input
