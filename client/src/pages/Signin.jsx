@@ -3,7 +3,12 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+
+
 const Signin = () => {
+
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -16,14 +21,42 @@ const Signin = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = async (data) => {
-    console.log(data);
-  };
+  
+
+  const navigate = useNavigate(); 
+
+const onSubmit = async (data) => {
+  try {
+    const response = await fetch("http://localhost:5000/auth/Signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      toast.success("Login  successful!");
+     
+      navigate("/"); 
+    } else {
+      toast.error(result.message || "Login failed. Please try again.");
+    }
+  } catch (error) {
+    toast.error("This is a server error. Try again later.",error.message);
+  }
+};
+
 
   return (
     <div className="h-screen w-full p-1 flex justify-center items-center bg-gray-200">
       <form
-        className="border shadow-md rounded-lg p-6 bg-white"
+        className=" w-1/4 border shadow-md rounded-lg p-6 bg-white"
         onSubmit={handleSubmit(onSubmit)}
       >
         {/* Title */}
@@ -103,7 +136,7 @@ const Signin = () => {
           </p>
         </div>
         {/* Submit button */}
-        <button className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md">
+        <button  to = "/" className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md">
           Agree & Join
         </button>
 

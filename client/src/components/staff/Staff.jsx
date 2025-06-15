@@ -1,8 +1,9 @@
 
-import MyCalendar from '../Calendar';
+// import MyCalendar from '../Calendar';
 import Sidebar from '../SideBar/Sidebar';
 import Header from '../Header/Header';
-import DataTableComponent from '../HealthScheduler/DataTableComponent';
+// import DataTableComponent from '../HealthScheduler/DataTableComponent';
+import AddUser from './AddUser';
 
 const Staff = () => {
    
@@ -17,7 +18,8 @@ const Staff = () => {
               <Sidebar/>
             </div>
             {/* Main body */}
-            <DataTableComponent/>
+            <AddUser/>
+            {/* <DataTableComponent */}
           </div>
         </div>
       );

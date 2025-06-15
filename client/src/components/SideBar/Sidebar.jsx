@@ -4,6 +4,7 @@ import { MdSick } from "react-icons/md";
 import { AiTwotoneSchedule } from "react-icons/ai";
 import { RiTeamFill } from "react-icons/ri";
 import dp from "../../assets/dp.png";
+import {Link} from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -28,14 +29,22 @@ const Sidebar = () => {
       <ListItem icon={<RiTeamFill />} item="Staff" link_to="/staff" />
       </div>
       
+      {/* to = "/" className="h-10 w-full text-white text-xs bg-blue-600 
+      mt-6 flex justify-center items-center rounded-md" */}
+
+
 
 
        {/* logout button */}
+       <Link to="/Signin">
+       
        <div className=" bg-green-600 h-[30px] w-[180px] text-white text-sm rounded-md py-3 px-3 flex justify-center items-center  ml-4 absolute bottom-0 left-0 right-0">
-        logout
+         
+          logout
       </div>
+       </Link>
     </div>
-  );
+  )
 };
 
 export default Sidebar;
