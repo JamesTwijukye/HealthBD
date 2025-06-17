@@ -1,13 +1,18 @@
 import Users from "../models/userModels.js";
 import bcrypt from 'bcrypt';
-import nodemailer from "nodemailer";
+import mongoose from 'mongoose';
 
 
 export const fetchAllUsers = async (req, res) => {
-  const allusers = Users.find();
-
-  res.send("Patients");
+  try {
+  
+    const allUsers = await Users.find();
+      return res.status(200).json(allUsers);
+  } catch (error) {
+    return res.status(500).json({ message: "Failed to fetch users" });
+  }
 };
+
 
 export const createUser = async (req, res) => {
   try {
@@ -72,11 +77,7 @@ export const SigninUser = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-    
-
-
-    // Successful login
-    return res.status(200).json({ message: "Login successful", user: { id: user._id, email: user.email, name: user.name } });
+    return res.status(200).json({ message: "Login successful", user: { id: user.id, email: user.email, name: user.name } });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
@@ -84,82 +85,28 @@ export const SigninUser = async (req, res) => {
 };
 
 
-export const deleteUser = async (req, res) => {
-  const { Id } = req.param;
 
-  const { name, email, password } = req.body;
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
 
   try {
-    const wantedUser = await Users.findById(Id);
 
-    if (!wantedUser) {
-      return res.status(404).json({ message: "user not found" });
-
-      await wantedUser.delete();
-
-      res.status(200).json({ message: "user deleted successfully" });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid user ID format" });
     }
+    const user = await Users.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    await user.deleteOne();
+    res.status(200).json({ message: 'User deleted successfully' });
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-
-
-// Configure nodemailer 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    "user": "email",
-    "pass": "password", 
-  },
-});
-
-// Generate a random password
-const generateRandomPassword = () => {
-  return crypto.randomBytes(6).toString('hex'); // 12-character password
-};
-
-// Password reset function
-export const resetPassword = async (req, res) => {
-  const { email } = req.body;
-
-  try {
-    const user = await Users.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ message: "User with that email not found" });
-    }
-
-    // Generate new password and hash it
-    const newPassword = generateRandomPassword();
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-
-    // Check if it's same as old password
-    const isSame = await bcrypt.compare(newPassword, user.password);
-    if (isSame) {
-      return res.status(400).json({ message: "Generated password matched old one. Try again." });
-    }
-
-    // Save new hashed password
-    user.password = hashedPassword;
-    await user.save();
-
-    // Send new password via email
-    await transporter.sendMail({
-      from: email,
-      to: user.email,
-      subject: 'Password Reset - HealthBD',
-      text: `Hello ${user.name},\n\nYour new password is: ${newPassword}\n\nPlease login and change it immediately.`,
-    });
-
-    res.status(200).json({ message: "New password sent to your email" });
-
-  } catch (error) {
-    console.error("Error in resetPassword:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
 
 //function to add and save a new user
 

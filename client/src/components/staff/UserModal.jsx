@@ -1,15 +1,15 @@
-// src/components/UserModal.js
+
 
 
 const UserModal = ({ formData, handleChange, handleSubmit, handleClose }) => {
  
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-50">
+    <div  className="flex justify-center items-center z-50 fixed inset-0 bg-black bg-opacity-40">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg w-96 shadow-lg relative"
       >
-        <h2 className="text-xl font-bold mb-4 text-center">Add New User</h2>
+        <h2 className="text-xl font-bold mb-4 text-center text-green-600">Add New User</h2>
 
         <input
           type="text"
@@ -45,13 +45,13 @@ const UserModal = ({ formData, handleChange, handleSubmit, handleClose }) => {
           <button
             type="button"
             onClick={handleClose}
-            className="bg-gray-400 text-white px-4 py-2 rounded"
+            className="bg-black text-white px-4 py-2 rounded"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded"
+            className="bg-green-600 text-white px-4 py-2 rounded"
           >
             Save
           </button>

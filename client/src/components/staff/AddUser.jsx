@@ -1,6 +1,7 @@
 // AddUser.js
 import { useState } from 'react';
 import UserModal from './UserModal.jsx'; 
+import { DeleteUserModal } from './DeleteUserModal.jsx';
 
 const AddUser = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,12 +10,21 @@ const AddUser = () => {
     email: '',
     password: '',
   });
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [userIdToDelete, setUserIdToDelete] = useState('');
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => {
     setIsOpen(false);
     setFormData({ name: '', email: '', password: '' });
   };
+
+  const handleOpenDelete = () => setIsDeleteOpen(true);
+  const handleCloseDelete = () => {
+    setIsDeleteOpen(false);
+    setUserIdToDelete('');
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +58,24 @@ const AddUser = () => {
     onSubmit(formData);
   };
 
+  const handleDeleteUser = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/auth/deleteUser/${userIdToDelete}`, {
+        method: 'DELETE'
+      });
+      const result = await response.json();
+      if (response.ok) {
+        alert('User deleted successfully');
+        handleCloseDelete();
+      } else {
+        alert(result.message || 'Failed to delete user');
+      }
+    } catch (error) {
+      alert('Server error: ' + error.message);
+    }
+  };
+
+
   return (
     <div className="w-full h-screen bg-gray-50 relative">
       <button
@@ -56,6 +84,14 @@ const AddUser = () => {
       >
         Add User
       </button>
+      <button
+        className="ml-6 mt-6 cursor-pointer bg-green-600 text-white font-semibold p-4"
+        onClick={handleOpenDelete}
+      >
+        Delete User
+      </button>
+
+     
 
       {isOpen && (
         <UserModal
@@ -65,6 +101,15 @@ const AddUser = () => {
           handleClose={handleClose}
         />
       )}
+
+      {isDeleteOpen && (
+              <DeleteUserModal
+                userId={userIdToDelete}
+                setUserId={setUserIdToDelete}
+                handleDelete={handleDeleteUser}
+                handleClose={handleCloseDelete}
+              />
+            )}
     </div>
   );
 };
