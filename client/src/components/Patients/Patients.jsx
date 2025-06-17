@@ -4,7 +4,7 @@ import DataTableComponent from '../HealthScheduler/DataTableComponent';
 const Patients = () => {
   return (
   
-    < div className="w-full h-screen max-h-screen overflow-hidden bg-white">
+    < div className="w-full h-screen overflow-hidden bg-white">
       
         {/* Main body */}
         <DataTableComponent/>

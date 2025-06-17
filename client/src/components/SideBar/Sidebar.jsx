@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 const Sidebar = () => {
   
   return (
-    <div className="h-full sm:flex hidden  justify-evenly flex-col text-black bg-white border-gray-100 shadow-lg  ">
+    <div className=" h-full sm:flex hidden fixed left-0 top-0 justify-evenly flex-col text-black bg-white border-gray-100 shadow-lg  ">
       <div className="w-full flex flex-col items-center justify-center mb-12">
         <img src={dp} className="w-16 border rounded-lg shadow-lg mt-4" alt={"display-image"}/>
         <div className="flex flex-col items-center mt-3">
@@ -19,7 +19,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center ">
-      <ListItem icon={<GrOverview />} item="Overview" link_to="/" />
+      <ListItem icon={<GrOverview />} item="Overview" link _to="/" />
       <ListItem
         icon={<AiTwotoneSchedule />}
         item="Schedule"
@@ -29,10 +29,7 @@ const Sidebar = () => {
       <ListItem icon={<RiTeamFill />} item="Staff" link_to="/staff" />
       </div>
       
-      {/* to = "/" className="h-10 w-full text-white text-xs bg-blue-600 
-      mt-6 flex justify-center items-center rounded-md" */}
-
-
+      
 
 
        {/* logout button */}

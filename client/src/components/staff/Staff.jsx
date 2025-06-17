@@ -5,9 +5,10 @@ import Header from '../Header/Header';
 // import DataTableComponent from '../HealthScheduler/DataTableComponent';
 
 const Staff = () => {
+  
    
       return (
-        <div className="w-full h-screen max-h-screen overflow-hidden bg-white">
+        <div className="w-full h-screen overflow-hidden bg-white">
           {/* Header */}
           <Header/>
           {/* Lower body section */}
