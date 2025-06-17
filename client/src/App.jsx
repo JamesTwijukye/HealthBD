@@ -5,6 +5,7 @@ import HealthScheduler from "./components/HealthScheduler/HealthScheduler";
 
 import {Toaster} from "sonner";
 import UserList from "./components/Users/UserList";
+import Staff from "./components/staff/Staff.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/schedule" element={<HealthScheduler />} />
         <Route path="/Userlist" element={<UserList/>} />
+        <Route path="/staff" element={<Staff />} />
 
         
       </Routes>
