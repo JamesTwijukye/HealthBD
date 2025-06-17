@@ -5,7 +5,7 @@ import HealthScheduler from "./components/HealthScheduler/HealthScheduler";
 
 import {Toaster} from "sonner";
 import UserList from "./components/Users/UserList";
-import Staff from "./components/staff/Staff.jsx";
+import Staff from "./pages/Staff.jsx";
 
 function App() {
   return (

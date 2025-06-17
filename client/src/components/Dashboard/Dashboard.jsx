@@ -4,7 +4,7 @@ import Overview from "../Overview/Overview.jsx";
 import { Routes, Route } from "react-router-dom";
 import HealthScheduler from "../HealthScheduler/HealthScheduler.jsx"; 
 import Patients from "../Patients/Patients.jsx";
-import Staff from "../staff/Staff.jsx";
+import Staff from "../../pages/Staff.jsx";
 const Dashboard = () => {
   return (
     <div className="w-full h-screen max-h-screen overflow-hidden bg-white">

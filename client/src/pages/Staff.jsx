@@ -1,12 +1,10 @@
+import Header from "../components/Header/Header.jsx";
+import Sidebar from "../components/SideBar/Sidebar.jsx";
 
-// import MyCalendar from '../Calendar';
-import Sidebar from '../SideBar/Sidebar';
-import Header from '../Header/Header';
-// import DataTableComponent from '../HealthScheduler/DataTableComponent';
 
 const Staff = () => {
-  
-   
+
+
       return (
         <div className="w-full h-screen overflow-hidden bg-white">
           {/* Header */}
@@ -18,11 +16,14 @@ const Staff = () => {
               <Sidebar/>
             </div>
             {/* Main body */}
+            <div className="bg-green-300 h-screen w-full">
+                fggfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+            </div>
             {/* <DataTableComponent */}
           </div>
         </div>
       );
- 
+
 }
 
 export default Staff;
