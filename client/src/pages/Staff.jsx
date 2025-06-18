@@ -7,25 +7,25 @@ const Staff = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchUsers = async () => {
-    setLoading(true);
-
-    try {
-      const response = await fetch(`${BACKEND_URL}/auth/fetchUsers`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch users");
-      }
-      const data = await response.json();
-      setUsers(data);
-    } catch (err) {
-      console.error(err);
-      toast.error(err.message);
-    }
-
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true);
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/auth/fetchUsers`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        console.error(err);
+        toast.error(err.message);
+      }
+
+      setLoading(false);
+    };
+
     fetchUsers();
   }, []);
 
