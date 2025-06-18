@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 
-const Signin = () => {
+const LoginPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -159,4 +159,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default LoginPage;
