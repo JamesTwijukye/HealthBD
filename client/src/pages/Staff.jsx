@@ -7,7 +7,7 @@ import Loader from "../components/Loader.jsx";
 const Staff = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [fetchUsers, setFetchUsers] = useState(true);
+  const [fetchUsers, setFetchUsers] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -24,7 +24,7 @@ const Staff = () => {
         console.error(err);
         toast.error(err.message);
       }
-      // setLoading(false);
+      setLoading(false);
       setFetchUsers(false);
     };
 
