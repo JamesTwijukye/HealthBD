@@ -1,16 +1,14 @@
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { BACKEND_URL } from "../utils/index.jsx";
-import { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterPage = () => {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -19,11 +17,14 @@ const RegisterPage = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
-
     const { confirmPassword, username, email, password } = data;
     if (confirmPassword.localeCompare(password)) {
       toast.error("Passwords donot match");
@@ -35,23 +36,29 @@ const RegisterPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      "body": JSON.stringify({ username, email, password })
-    })
-    const response = await registerUser.json()
+      body: JSON.stringify({ username, email, password }),
+    });
+    const response = await registerUser.json();
     if (response.ok) {
-      toast.success(response.message)
-      reset()
+      toast.success(response.message);
+      reset();
     } else {
-      toast.error(response.message)
+      toast.error(response.message);
     }
-  }
+  };
   return (
     <div className="h-screen w-full p-1 flex justify-center items-center bg-gray-200">
+      <form
+        className="w-1/4 border border-blue-600 shadow-md rounded-lg p-6 bg-white"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h2 className="text-center font-bold text-4xl text-blue-600  mb-6">
+          HealthBD
+        </h2>
 
-      <form className="w-1/4 border border-blue-600 shadow-md rounded-lg p-6 bg-white" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="text-center font-bold text-4xl text-blue-600  mb-6">HealthBD</h2>
-
-        <h2 className="text-xl text-center font-bold text-black mt-5">Register</h2>
+        <h2 className="text-xl text-center font-bold text-black mt-5">
+          Register
+        </h2>
 
         <div className="mt-3 flex flex-col">
           <label
@@ -69,9 +76,9 @@ const RegisterPage = () => {
             })}
           />
 
-          {
-            errors.username && <p className="text-red-500">Username is required</p>
-          }
+          {errors.username && (
+            <p className="text-red-500">Username is required</p>
+          )}
         </div>
 
         <div className="mt-3 flex flex-col">
@@ -89,9 +96,7 @@ const RegisterPage = () => {
               required: true,
             })}
           />
-          {
-            errors.email && <p className="text-red-500">Email is required</p>
-          }
+          {errors.email && <p className="text-red-500">Email is required</p>}
         </div>
 
         <div className="flex flex-col ">
@@ -110,7 +115,6 @@ const RegisterPage = () => {
               className="rounded-sm p-2 w-full"
             />
 
-
             {showPassword ? (
               <FaEyeSlash
                 className="mx-4 cursor-pointer"
@@ -122,9 +126,7 @@ const RegisterPage = () => {
                 onClick={() => handleShowPassword()}
               />
             )}
-
           </div>
-
 
           {
             <span className="text-red-500 text-xs">
@@ -149,8 +151,6 @@ const RegisterPage = () => {
               className="rounded-sm p-2 w-full"
             />
 
-
-
             {showConfirmPassword ? (
               <FaEyeSlash
                 className="mx-4 cursor-pointer"
@@ -164,7 +164,6 @@ const RegisterPage = () => {
             )}
           </div>
 
-
           {
             <span className="text-red-500 text-xs">
               {errors.confirmPassword?.message}
@@ -172,21 +171,27 @@ const RegisterPage = () => {
           }
         </div>
 
-
-        <button className="text-white text-md font-bold py-3  bg-blue-600 mt-4 flex justify-center items-center mx-auto rounded-md w-full" type="submit">Register</button>
+        <button
+          className="text-white text-md font-bold py-3  bg-blue-600 mt-4 flex justify-center items-center mx-auto rounded-md w-full"
+          type="submit"
+        >
+          Register
+        </button>
 
         <div className="text-black flex justify-center  text-lg mt-2 items-center">
-          <p >
-            <span className='italic text-md '>Back to</span>
-            <Link to="/Signin" className=" ml-2  hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
+          <p>
+            <span className="italic text-md ">Back to</span>
+            <Link
+              to="/Signin"
+              className=" ml-2  hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold"
+            >
               Login
-            </Link>  </p>
+            </Link>{" "}
+          </p>
         </div>
       </form>
     </div>
-
   );
 };
-
 
 export default RegisterPage;
