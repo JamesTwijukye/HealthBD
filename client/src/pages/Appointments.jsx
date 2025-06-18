@@ -2,7 +2,7 @@ import MyCalendar from "../components/Calendar";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-const HealthScheduler = () => {
+const Appointments = () => {
   return (
     <div className="w-full h-screen  overflow-hidden bg-white">
       {/* Header */}
@@ -22,4 +22,4 @@ const HealthScheduler = () => {
     </div>
   );
 };
-export default HealthScheduler;
+export default Appointments;
