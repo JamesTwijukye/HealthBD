@@ -8,6 +8,7 @@ const Staff = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [fetchUsers, setFetchUsers] = useState(false);
+  const [addUserModalOpen, setAddUserModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -63,6 +64,15 @@ const Staff = () => {
 
         {/* Main body */}
         <div className="w-full overflow-y-auto">
+          {/* Add user button */}
+          <div className="p-4">
+            <button
+              className="bg-green-700 text-white px-4 py-2 rounded"
+              onClick={() => setAddUserModalOpen(true)}
+            >
+              Add User
+            </button>
+          </div>
           {/* Table */}
           <table className="w-full">
             <thead>
@@ -105,6 +115,47 @@ const Staff = () => {
             </tbody>
           </table>
         </div>
+        {/* Add User Modal */}
+        {addUserModalOpen && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded shadow-lg w-1/3">
+              <h2 className="text-xl mb-4">Add User</h2>
+              <form>
+                <div className="mb-4">
+                  <label className="block mb-2">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    className="w-full p-2 border border-gray-300 rounded"
+                  />
+
+                  <label className="block mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full p-2 border border-gray-300 rounded"
+                  />
+
+                  <label className="block mb-2">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    className="w-full p-2 border border-gray-300 rounded"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                >
+                  Add User
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
