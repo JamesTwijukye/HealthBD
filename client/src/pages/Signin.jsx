@@ -21,36 +21,36 @@ const Signin = () => {
     setShowPassword(!showPassword);
   };
 
-  
 
-  const navigate = useNavigate(); 
 
-const onSubmit = async (data) => {
-  try {
-    const response = await fetch("http://localhost:5000/auth/Signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-      }),
-    });
+  const navigate = useNavigate();
 
-    const result = await response.json();
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/Signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+        }),
+      });
 
-    if (response.ok) {
-      toast.success("Login  successful!");
-     
-      navigate("/"); 
-    } else {
-      toast.error(result.message || "Login failed. Please try again.");
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Login  successful!");
+
+        navigate("/");
+      } else {
+        toast.error(result.message || "Login failed. Please try again.");
+      }
+    } catch (error) {
+      toast.error("This is a server error. Try again later.", error.message);
     }
-  } catch (error) {
-    toast.error("This is a server error. Try again later.",error.message);
-  }
-};
+  };
 
 
   return (
@@ -98,7 +98,7 @@ const onSubmit = async (data) => {
               })}
               className="rounded-sm p-2 w-full"
             />
-             
+
 
             {showPassword ? (
               <FaEyeSlash
@@ -112,14 +112,14 @@ const onSubmit = async (data) => {
               />
             )}
           </div>
-    
-            
-                      
-                   
-      <Link to="/ResetPassword" className=" text-blue-600 ml-2 text-md mt-2 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
-      forgotPassword?
-        </Link>  
-                  
+
+
+
+
+          <Link to="/ResetPassword" className=" text-blue-600 ml-2 text-md mt-2 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
+            forgotPassword?
+          </Link>
+
           {
             <span className="text-red-500 text-xs">
               {errors.password?.message}
@@ -136,7 +136,7 @@ const onSubmit = async (data) => {
           </p>
         </div>
         {/* Submit button */}
-        <button  to = "/" className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md">
+        <button to="/" className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md">
           Agree & Join
         </button>
 

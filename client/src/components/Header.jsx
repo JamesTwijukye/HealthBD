@@ -1,7 +1,7 @@
-import logo from "../../assets/logo.svg";
+import logo from "../assets/logo.svg";
 import {CiMenuBurger} from "react-icons/ci";
 import {useState} from "react";
-import Sidebar from "../SideBar/Sidebar";
+import Sidebar from "./SideBar/Sidebar";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 

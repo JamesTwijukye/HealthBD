@@ -1,29 +1,30 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Dashboard from "./components/Dashboard/Dashboard";
 import Signin from "./pages/Signin";
-import HealthScheduler from "./components/HealthScheduler/HealthScheduler";
-
-import {Toaster} from "sonner";
-import UserList from "./components/Users/UserList";
+import { Toaster } from "sonner";
 import Staff from "./pages/Staff.jsx";
+import Patients from "./pages/Patients.jsx";
+import Register from "./pages/Register.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import HealthScheduler from "./pages/HealthScheduler.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 function App() {
   return (
-      <>
-     
-    <Router>
-      <Routes>
-        <Route path="/*" element={<Dashboard />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/schedule" element={<HealthScheduler />} />
-        <Route path="/Userlist" element={<UserList/>} />
-        <Route path="/staff" element={<Staff />} />
+    <>
 
-        
-      </Routes>
-    </Router>
-    <Toaster richColors/>
-      </>
+      <Router>
+        <Routes>
+          <Route path="/*" element={<Dashboard />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ResetPassword />} />
+          <Route path="/schedule" element={<HealthScheduler />} />
+          <Route path="/staff" element={<Staff />} />
+          <Route path="/patients" element={<Patients />} />
+        </Routes>
+      </Router>
+      <Toaster richColors />
+    </>
   );
 }
 

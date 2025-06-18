@@ -17,7 +17,7 @@ const Staff = () => {
             </div>
             {/* Main body */}
             <div className="bg-green-300 h-screen w-full">
-                fggfgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+                
             </div>
             {/* <DataTableComponent */}
           </div>
