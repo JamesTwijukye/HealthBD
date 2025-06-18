@@ -1,4 +1,4 @@
-import ye from "../../assets/ye.jpeg";
+import ye from "../assets/ye.jpeg";
 import { HiMiniCheckCircle } from "react-icons/hi2";
 const UpcomingAppointment = () => {
   return (

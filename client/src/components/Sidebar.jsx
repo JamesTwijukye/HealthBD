@@ -21,7 +21,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center ">
-        <ListItem icon={<GrOverview />} item="Overview" link _to="/" />
+        <ListItem icon={<GrOverview />} item="Dashboard" link_to="/" />
         <ListItem
           icon={<AiTwotoneSchedule />}
           item="Schedule"
