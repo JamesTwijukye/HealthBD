@@ -6,9 +6,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-
 const LoginPage = () => {
-
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -20,8 +18,6 @@ const LoginPage = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
-
 
   const navigate = useNavigate();
 
@@ -51,7 +47,6 @@ const LoginPage = () => {
       toast.error("This is a server error. Try again later.", error.message);
     }
   };
-
 
   return (
     <div className="h-screen w-full p-1 flex justify-center items-center bg-gray-200">
@@ -99,7 +94,6 @@ const LoginPage = () => {
               className="rounded-sm p-2 w-full"
             />
 
-
             {showPassword ? (
               <FaEyeSlash
                 className="mx-4 cursor-pointer"
@@ -113,10 +107,10 @@ const LoginPage = () => {
             )}
           </div>
 
-
-
-
-          <Link to="/ResetPassword" className=" text-blue-600 ml-2 text-md mt-2 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
+          <Link
+            to="/ResetPassword"
+            className=" text-blue-600 ml-2 text-md mt-2 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold"
+          >
             forgotPassword?
           </Link>
 
@@ -136,7 +130,10 @@ const LoginPage = () => {
           </p>
         </div>
         {/* Submit button */}
-        <button to="/" className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md">
+        <button
+          to="/"
+          className="h-10 w-full text-white text-xs bg-blue-600 mt-6 flex justify-center items-center rounded-md"
+        >
           Agree & Join
         </button>
 
@@ -149,7 +146,10 @@ const LoginPage = () => {
         <div className="flex justify-center items-center mt-2">
           <h1 className="text-sm font-bold">
             Dont have an account on HealthBD ?
-            <Link to="/Register" className="text-md text-blue-600 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold">
+            <Link
+              to="/Register"
+              className="text-md text-blue-600 hover:text-yellow-500 focus:text-yellow-500 active:text-yellow-500 font-bold"
+            >
               Sign up
             </Link>
           </h1>

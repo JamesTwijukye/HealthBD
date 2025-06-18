@@ -1,6 +1,5 @@
-
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
   const {
@@ -12,10 +11,10 @@ const ResetPassword = () => {
   // Function to handle form submission
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/resetPassword', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/auth/resetPassword", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email: data.email }),
       });
@@ -23,13 +22,13 @@ const ResetPassword = () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert('Check your email for the reset link!');
+        alert("Check your email for the reset link!");
       } else {
-        alert(result.message || 'Something went wrong');
+        alert(result.message || "Something went wrong");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send reset email');
+      console.error("Error:", error);
+      alert("Failed to send reset email");
     }
   };
 
@@ -52,7 +51,7 @@ const ResetPassword = () => {
           <input
             type="email"
             id="email"
-            {...register('email', { required: 'Email is required' })}
+            {...register("email", { required: "Email is required" })}
             className="w-full bg-transparent border-2 rounded p-1"
           />
           {errors.email && (

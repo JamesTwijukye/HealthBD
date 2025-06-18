@@ -1,10 +1,7 @@
 import Header from "../components/Header.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 
-
 const Staff = () => {
-
-
   return (
     <div className="w-full h-screen overflow-hidden bg-white">
       {/* Header */}
@@ -16,14 +13,11 @@ const Staff = () => {
           <Sidebar />
         </div>
         {/* Main body */}
-        <div className="bg-green-300 h-screen w-full">
-
-        </div>
+        <div className="bg-green-300 h-screen w-full"></div>
         {/* <DataTableComponent */}
       </div>
     </div>
   );
-
-}
+};
 
 export default Staff;
