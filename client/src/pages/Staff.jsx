@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import Sidebar from "../components/Sidebar.jsx";
-
+import { BACKEND_URL } from "../utils/index.jsx";
+import { toast } from "sonner";
 const Staff = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const fetchUsers = async () => {
     setLoading(true);
-    setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/auth/fetchUsers");
+      const response = await fetch(`${BACKEND_URL}/auth/fetchUsers`);
       if (!response.ok) {
         throw new Error("Failed to fetch users");
       }
       const data = await response.json();
       setUsers(data);
     } catch (err) {
-      setError(err.message);
+      console.error(err);
+      toast.error(err.message);
     }
 
     setLoading(false);
@@ -41,9 +41,9 @@ const Staff = () => {
         </div>
 
         {/* Main body */}
-        <div className="w-full h-full overflow-y-auto">
+        <div className="w-full overflow-y-auto">
           {/* Table */}
-          <table className="w-full h-full border-collapse m-10">
+          <table className="w-full">
             <thead>
               <tr>
                 <th>Name</th>
@@ -51,12 +51,27 @@ const Staff = () => {
               </tr>
             </thead>
             <tbody className="text-sm">
-              {users.map((user) => (
-                <tr key={user._id}>
-                  <td className="p-2 border border-gray-300">{user.name}</td>
-                  <td className="p-2 border border-gray-300">{user.email}</td>
+              {loading && (
+                <tr>
+                  <td colSpan="2" className="p-2 text-center">
+                    Loading...
+                  </td>
                 </tr>
-              ))}
+              )}
+              {users.length == 0 ? (
+                <tr>
+                  <td colSpan="2" className="p-2 text-center">
+                    No users found
+                  </td>
+                </tr>
+              ) : (
+                users.map((user) => (
+                  <tr key={user._id}>
+                    <td className="p-2 border border-gray-300">{user.name}</td>
+                    <td className="p-2 border border-gray-300">{user.email}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
