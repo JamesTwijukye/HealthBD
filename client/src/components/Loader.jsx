@@ -2,11 +2,12 @@ const Loader = () => {
   return (
     <div>
       <section className="dots-container">
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
+        <div className="three-body">
+          <div className="three-body__dot"></div>
+          <div className="three-body__dot"></div>
+          <div className="three-body__dot"></div>
+          <div className="three-body__dot"></div>
+        </div>
       </section>
     </div>
   );

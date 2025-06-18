@@ -3,9 +3,10 @@ import Header from "../components/Header.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import { BACKEND_URL } from "../utils/index.jsx";
 import { toast } from "sonner";
+import Loader from "../components/Loader.jsx";
 const Staff = () => {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [fetchUsers, setFetchUsers] = useState(true);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Staff = () => {
         console.error(err);
         toast.error(err.message);
       }
-      setLoading(false);
+      // setLoading(false);
       setFetchUsers(false);
     };
 
@@ -72,16 +73,15 @@ const Staff = () => {
               </tr>
             </thead>
             <tbody className="text-sm">
-              {loading && (
+              {loading ? (
                 <tr>
-                  <td colSpan="2" className="p-2 text-center">
-                    Loading...
+                  <td colSpan="3" className="h-screen text-center">
+                    <Loader />
                   </td>
                 </tr>
-              )}
-              {users.length == 0 ? (
+              ) : users.length == 0 ? (
                 <tr>
-                  <td colSpan="2" className="p-2 text-center">
+                  <td colSpan="3" className="p-2 text-center">
                     No users found
                   </td>
                 </tr>
