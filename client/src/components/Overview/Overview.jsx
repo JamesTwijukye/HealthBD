@@ -1,7 +1,6 @@
 import { FaPlus } from "react-icons/fa6";
 import web from "../../assets/web.png";
 
-
 import UpcomingAppointment from "./UpcomingAppointment";
 import Task from "./Task";
 import Conversation from "./Conversation";
@@ -47,7 +46,7 @@ const Overview = () => {
             <p>Create</p>
           </div>
         </div>
-      <Conversation/>
+        <Conversation />
       </div>
       <div className="bg-gray-100 h-2/5 w-full my-2">
         <div className=" bg-white border border-1 h-6 w-full flex justify-between">
@@ -58,9 +57,8 @@ const Overview = () => {
           </div>
         </div>
         <div className="bg-white border border-1 h-6 w-full my-1 flex flex-row justify-evenly gap-2">
-        <Task/>
+          <Task />
         </div>
-      
       </div>
     </div>
   );
