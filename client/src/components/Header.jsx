@@ -1,20 +1,20 @@
 import logo from "../assets/logo.svg";
-import {CiMenuBurger} from "react-icons/ci";
-import {useState} from "react";
-import Sidebar from "./SideBar/Sidebar";
+import { CiMenuBurger } from "react-icons/ci";
+import { useState } from "react";
+import Sidebar from "./Sidebar";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  const ToogleShowMenu = ()=>{
+  const ToogleShowMenu = () => {
     setShowMenu(!showMenu);
   }
   return (
     <div className="w-full h-16 flex justify-between items-center px-4 shadow-sm bg-green-800 relative">
       <div className="flex items-center gap-2">
-        <img src={logo} className="h-10"  alt={""}/>
+        <img src={logo} className="h-10" alt={""} />
         {/* Logo */}
         <h1 className="text-xl font-bold text-gray-100"> HealthBD </h1>
-  </div>
+      </div>
       {/* Search Bar */}
 
       <input
@@ -28,17 +28,17 @@ const Header = () => {
         <option value="French">French</option>
       </select>
 
-      <CiMenuBurger  className="text-white md:hidden flex cursor-pointer" onClick={()=>ToogleShowMenu()}/>
+      <CiMenuBurger className="text-white md:hidden flex cursor-pointer" onClick={() => ToogleShowMenu()} />
 
       {
         showMenu && (
           <div className={"absolute top-0 left-0  h-screen w-80 z-50"}>
-              <Sidebar/>
+            <Sidebar />
           </div>
         )
       }
 
-     
+
     </div>
   );
 };

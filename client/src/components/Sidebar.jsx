@@ -3,7 +3,7 @@ import { GrOverview } from "react-icons/gr";
 import { MdSick } from "react-icons/md";
 import { AiTwotoneSchedule } from "react-icons/ai";
 import { RiTeamFill } from "react-icons/ri";
-import dp from "../../assets/dp.png";
+import dp from "../assets/dp.png";
 import {Link} from "react-router-dom";
 
 

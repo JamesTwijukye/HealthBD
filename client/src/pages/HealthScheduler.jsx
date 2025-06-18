@@ -1,7 +1,7 @@
 
 import MyCalendar from "../components/Calendar";
 import Header from "../components/Header";
-import Sidebar from "../components/SideBar/Sidebar";
+import Sidebar from "../components/Sidebar";
 
 const HealthScheduler = () => {
   return (

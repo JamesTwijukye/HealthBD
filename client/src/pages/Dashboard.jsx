@@ -1,5 +1,7 @@
-import Sidebar from "../components/SideBar/Sidebar.jsx";
-import Header from "../components/Header/Header.jsx";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+
+
 const Dashboard = () => {
   return (
     <div className="w-full h-screen max-h-screen overflow-hidden bg-white">
