@@ -6,6 +6,7 @@ import { toast } from "sonner";
 const Staff = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fetchUsers, setFetchUsers] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -22,12 +23,31 @@ const Staff = () => {
         console.error(err);
         toast.error(err.message);
       }
-
       setLoading(false);
+      setFetchUsers(false);
     };
 
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
+
+  const handleDeleteUser = async (userId) => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/auth/deleteUser/${userId}`, {
+        method: "DELETE",
+      });
+      const result = await response.json();
+      if (response.ok) {
+        toast.success("User deleted successfully");
+        setFetchUsers(true);
+      } else {
+        toast.error(result.message || "Failed to delete user");
+      }
+    } catch (error) {
+      toast.error("Server error: " + error.message);
+    }
+  };
 
   return (
     <div className="w-full h-screen bg-white">
@@ -48,6 +68,7 @@ const Staff = () => {
               <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -69,6 +90,15 @@ const Staff = () => {
                   <tr key={user._id}>
                     <td className="p-2 border border-gray-300">{user.name}</td>
                     <td className="p-2 border border-gray-300">{user.email}</td>
+                    <td className="p-2 border border-gray-300">
+                      <button className="text-blue-500 px-4">Edit</button>
+                      <button
+                        className="text-red-500 px-4"
+                        onClick={() => handleDeleteUser(user._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))
               )}
